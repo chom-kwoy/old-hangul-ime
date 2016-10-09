@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>옛한글</title>
+    <style>
+        * {
+            font-family: 'NanumBarunGothic YetHangul','함초롬돋움 LVT','HCR Dotum LVT','함초롬바탕 LVT',
+            'HCR Batang LVT','본고딕','Source Han Sans K','본고딕 KR','Source Han Sans KR','Noto Sans CJK KR',
+            '나눔바른고딕 옛한글','나눔명조 옛한글','NanumMyeongjo YetHangul','은 바탕','Un Batang','돋움 옛한글',
+            'Dotum Old Hangul','바탕 옛한글','Batang Old Hangul','굴림 옛한글','NewGulim Old Hangul','궁서 옛한글',
+            'Gungsuh Old Hangul','맑은 고딕','Malgun Gothic','함초롬돋움','HCR Dotum','함초롬바탕','HCR Batang',
+            'Code2000',sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #DDD;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            width: 100%;
+            background-color: rgba(0,0,0,0.8);
+            box-shadow: rgba(0,0,0,0.2) 0 0 10px;
+            height: 72px;
+            margin-bottom: 10px;
+            color: #eee;
+            line-height: 72px;
+            padding-left: 20px;
+            font-size: 28pt;
+        }
+        body > div {
+            margin: auto;
+            display: table;
+        }
+        span {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 150px;
+            text-align: center;
+            display: inline-block;
+            box-shadow: rgba(0,0,0,0.2) 0 0 10px inset;
+            background-color: lightgrey;
+            margin-left: 10px;
+            vertical-align: top;
+            color: #222;
+        }
+        textarea {
+            display: inline-block;
+            padding: 10px;
+            ime-mode: disabled;
+            width: 800px;
+            height: 400px;
+            font-size: 28pt;
+            text-rendering: geometricPrecision;
+            border: none;
+            resize: none;
+            box-shadow: rgba(0,0,0,0.2) 0 0 10px;
+            background-color: white;
+            color: #333;
+        }
+        article {
+            margin-top: 30px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script src="rangyinputs.js"></script>
+    <script src="inputter.js"></script>
+</head>
+<body>
+<header>옛한글 입력기</header>
+<div>
+    <textarea title="input"></textarea>
+    <span></span>
+    <div>
+        <label><input type="radio" name="dir" value="hor" checked>가로쓰기</label>
+        <label><input type="radio" name="dir" value="ver">세로쓰기</label>
+    </div>
+    <article>
+        옛한글 입력기입니다
+    </article>
+</div>
+</body>
+</html>
