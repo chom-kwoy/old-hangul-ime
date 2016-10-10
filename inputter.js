@@ -18,7 +18,7 @@ var cons_key = {
     86: '\u314D', // ㅍ
     87: '\u3148', // ㅈ
     88: '\u314C', // ㅌ
-    90: '\u314B'  // ㅋ
+    90: '\u314B', // ㅋ
 };
 var cons_shift_key = {
     65: '\u3141', // ㅁ
@@ -59,9 +59,20 @@ var cho = {
     '\u3132': '\u1101', // ㄱㄱ
     '\u3165': '\u1114', // ㄴㄴ
     '\u3146': '\u110A', // ㅅㅅ
-    '\u3149': '\u110D',  // ㅈㅈ
+    '\u3149': '\u110D', // ㅈㅈ
     '\u3181': '\u114C', // yetieung
-    '\u3173': '\u1120' // ㅂㄷ
+    '\u3173': '\u1120', // ㅂㄷ
+    '\u317A': '\u112D', // ㅅㄱ
+    '\u317B': '\u112E', // ㅅㄴ
+    '\u317C': '\u112F', // ㅅㄷ
+    '\u317D': '\u1132', // ㅅㅂ
+    '\u317E': '\u1136', // ㅅㅈ
+    '\u3171': '\u111D', // ㅁㅇ
+    '\u3178': '\u112B', // ㅂㅇ
+    '\u3179': '\u112C', // ㅃㅇ
+    '\u3184': '\u1157', // ㅍㅇ
+    '\u317F': '\u1140', // pansios
+    '\u3186': '\u1159', // yeorinhieuh
 };
 cho_to_cons = reverse(cho);
 var jong = {
@@ -94,7 +105,16 @@ var jong = {
     'ㅄ': '\u11B9',
     '\u3165': '\u11FF',  // ㄴㄴ
     '\u3181': '\u11F0', // yetieung
-    '\u316D': '\u11D9' // ㄹ-yeorinhieuh
+    '\u316D': '\u11D9', // ㄹ-yeorinhieuh
+    '\u317A': '\u11E7', // ㅅㄱ
+    '\u317C': '\u11E8', // ㅅㄷ
+    '\u317D': '\u11EA', // ㅅㅂ
+    '\u3171': '\u11E2', // ㅁㅇ
+    '\u3178': '\u11E6', // ㅂㅇ
+    '\u3184': '\u11F4', // ㅍㅇ
+    '\u317F': '\u11EB', // pansios
+    '\u3186': '\u11F9' // yeorinhieuh
+    
 };
 jong_to_cons = reverse(jong);
 var comb_cons = {
@@ -110,7 +130,17 @@ var comb_cons = {
     'ㄹㅎ': 'ㅀ',
     'ㅂㅅ': 'ㅄ',
     'ㄹ\u3186': '\u316D', // ㄹ-yeorinhieuh
-    'ㅂㄷ': '\u3173'
+    'ㅂㄷ': '\u3173',
+    'ㅅㄱ': '\u317A',
+    'ㅅㄴ': '\u317B', // ㅅㄴ
+    'ㅅㄷ': '\u317C', // ㅅㄷ
+    'ㅅㅂ': '\u317D', // ㅅㅂ
+    'ㅅㅈ': '\u317E', // ㅅㅈ
+    'ㅁㅇ': '\u3171',
+    'ㅂㅇ': '\u3178',
+    'ㅃㅇ': '\u3179',
+    'ㅍㅇ': '\u3184',
+    'ㅅㅇ': '\u317F' // pansios
 };
 rev_comb_cons = reverse(comb_cons);
 var vowel_key = {
@@ -310,7 +340,8 @@ $(document).ready(function() {
                     cur += comb.charAt(0);
                     last = comb.charAt(1);
                 }
-                cur += cho[last];
+                if(last in cho) cur += cho[last];
+                else cur += last;
             }
 
             if(isJong(last) || isCons(last) || isCho(last)) {
