@@ -283,9 +283,8 @@ $(document).ready(function() {
 
         console.log(k);
         
-        if(ctrl || [16, 17, 25, 37, 39, 116].indexOf(k) != -1) {
-            console.log("default behavior");
-            return;
+        if(ctrl || [16, 17, 18, 25, 37, 39, 116].indexOf(k) != -1) {
+            return; // invoke default behavior for these inputs
         }
 
         var cur = ""
@@ -389,7 +388,7 @@ $(document).ready(function() {
         } else if(k == 13) { // enter
             i = '\n';
         } else {
-            ta.replaceSelectedText(cur);
+            ta.setSelection(ta.getSelection().end);
             other = true;
             return;
         }
@@ -408,7 +407,6 @@ $(document).ready(function() {
         if(event.which == 16) shift = false;
         if(event.which == 17) ctrl = false;
     }).on('keypress', function(event) {
-        console.log('keypress')
         var k = event.which;
         if(ctrl || other || k == 0) {
             other = false;
