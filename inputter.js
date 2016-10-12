@@ -255,6 +255,7 @@ function isHangul(c) {
 }
 var shift = false;
 var ctrl = false;
+var other = false;
 $(document).ready(function() {
     var ta = $('textarea');
     ta.attr('placeholder',
@@ -264,7 +265,7 @@ $(document).ready(function() {
         if($(this).val() == 'hor') ta.css('writing-mode', 'horizontal-tb');
         else if($(this).val() == 'ver') ta.css('writing-mode', 'vertical-rl');
     });
-    function getCurComp() {
+    function getCurComp() { // get currently compositing character(s)
         var end = ta.getSelection().end;
         var cur = ta.val().slice(0, end);
         if(cur.length == 0) return "";
@@ -282,12 +283,14 @@ $(document).ready(function() {
 
         console.log(k);
         
-        if(ctrl || [37, 39, 116].indexOf(k) != -1) {
+        if(ctrl || [16, 17, 25, 37, 39, 116].indexOf(k) != -1) {
             console.log("default behavior");
             return;
         }
 
-        var cur = getCurComp();
+        var cur = ""
+        if(ta.getSelection().length > 0)
+            cur = getCurComp();
         var last = cur.slice(-1);
 
         var i = "";
@@ -385,6 +388,10 @@ $(document).ready(function() {
             i = '\u302F'; // tone 2
         } else if(k == 13) { // enter
             i = '\n';
+        } else {
+            ta.replaceSelectedText(cur);
+            other = true;
+            return;
         }
 
         cur += i;
@@ -401,8 +408,12 @@ $(document).ready(function() {
         if(event.which == 16) shift = false;
         if(event.which == 17) ctrl = false;
     }).on('keypress', function(event) {
+        console.log('keypress')
         var k = event.which;
-        if(ctrl || k == 0) return;
+        if(ctrl || other || k == 0) {
+            other = false;
+            return;
+        }
         event.preventDefault();
     });
 });
