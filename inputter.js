@@ -73,6 +73,7 @@ var cho = {
     '\u3184': '\u1157', // ㅍㅇ
     '\u317F': '\u1140', // pansios
     '\u3186': '\u1159', // yeorinhieuh
+    'ㅄ': '\u1121'
 };
 cho_to_cons = reverse(cho);
 var jong = {
@@ -114,7 +115,6 @@ var jong = {
     '\u3184': '\u11F4', // ㅍㅇ
     '\u317F': '\u11EB', // pansios
     '\u3186': '\u11F9' // yeorinhieuh
-    
 };
 jong_to_cons = reverse(jong);
 var comb_cons = {
@@ -254,6 +254,7 @@ function isHangul(c) {
     return isCons(c) || isCho(c) || isJung(c) || isJong(c) || isTonemark(c);
 }
 var shift = false;
+var ctrl = false;
 $(document).ready(function() {
     var ta = $('textarea');
     ta.attr('placeholder',
@@ -277,8 +278,14 @@ $(document).ready(function() {
     ta.on('keydown', function (event) {
         var k = event.which;
         if(k == 16) shift = true;
+        if(k == 17) ctrl = true;
 
         console.log(k);
+        
+        if(ctrl || [37, 39, 116].indexOf(k) != -1) {
+            console.log("default behavior");
+            return;
+        }
 
         var cur = getCurComp();
         var last = cur.slice(-1);
@@ -387,13 +394,15 @@ $(document).ready(function() {
             cur = getCurComp();
             span.text(cur);
         }
-
-        if([37, 39, 116].indexOf(k) == -1) event.preventDefault();
+        
+        event.preventDefault();
+        
     }).on('keyup', function (event) {
         if(event.which == 16) shift = false;
+        if(event.which == 17) ctrl = false;
     }).on('keypress', function(event) {
         var k = event.which;
-        if(k == 0) return;
+        if(ctrl || k == 0) return;
         event.preventDefault();
     });
 });
