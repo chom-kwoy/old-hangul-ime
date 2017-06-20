@@ -36,11 +36,11 @@
             padding-left: 20px;
             font-size: 28pt;
         }
-        body > div {
+        body > div, body > div > div {
             margin: auto;
             display: table;
         }
-        span {
+        .preview {
             width: 200px;
             height: 200px;
             line-height: 200px;
@@ -56,9 +56,6 @@
         textarea {
             display: inline-block;
             padding: 10px;
-            ime-mode: disabled;
-            width: 800px;
-            height: 400px;
             font-size: 20pt;
             text-rendering: geometricPrecision;
             border: none;
@@ -67,26 +64,53 @@
             background-color: white;
             color: #333;
         }
-        article {
-            margin-top: 30px;
+        .input {
+            width: 800px;
+            height: 400px;
+            ime-mode: disabled;
+        }
+        .convert {
+            width: 400px;
+            height: 400px;
+        }
+        .arrow {
+            display: inline-block;
+            height: 400px;
+            vertical-align: bottom;
+            line-height: 400px;
+            padding: 0 10px 0 10px;
+        }
+        section {
+            padding-bottom: 20px;
+        }
+        .sectiontitle {
+            font-size: 20px;
         }
     </style>
     <script src="jquery.js"></script>
     <script src="rangyinputs.js"></script>
+    <script src="converter.js"></script>
     <script src="inputter.js"></script>
 </head>
 <body>
 <header>옛한글 입력기</header>
 <div>
-    <textarea title="input"></textarea>
-    <span></span>
+  <section>
+    <div class="sectiontitle">옛한글 입력기</div>
+    <textarea class='input' title="input"
+        placeholder="나랏〮말〯ᄊᆞ미〮...";></textarea>
+    <span class='preview'></span>
     <div>
-        <label><input type="radio" name="dir" value="hor" checked>가로쓰기</label>
-        <label><input type="radio" name="dir" value="ver">세로쓰기</label>
+      <label><input type="radio" name="dir" value="hor" checked>가로쓰기</label>
+      <label><input type="radio" name="dir" value="ver">세로쓰기</label>
     </div>
-    <article>
-        옛한글 입력기입니다
-    </article>
+  </section>
+  <section>
+    <div class="sectiontitle">한양 PUA → 첫가끝 코드 변환</div>
+    <textarea class='convert convert-input' title='pua-input' placeholder="한양 PUA"></textarea>
+    <div class='arrow'>→</div>
+    <textarea class='convert convert-output' title='uni-output' placeholder="첫가끝 코드"></textarea>
+  </section>
 </div>
 </body>
 </html>

@@ -257,9 +257,7 @@ var shift = false;
 var ctrl = false;
 var other = false;
 $(document).ready(function() {
-    var ta = $('textarea');
-    ta.attr('placeholder',
-        '\u1102\u1161\u1105\u1161\u11BA\u302E\u1106\u1161\u11AF\u302F\u110A\u119E\u1106\u1175\u302E...');
+    var ta = $('.input');
     var span = $('span');
     $('input[type=radio]').on('change', function() {
         if($(this).val() == 'hor') ta.css('writing-mode', 'horizontal-tb');
@@ -413,5 +411,18 @@ $(document).ready(function() {
             return;
         }
         event.preventDefault();
+    });
+
+    // CONVERTING
+    var output = $('.convert-output');
+    var input = $('.convert-input');
+    input.on('input change keyup', function(event) {
+    	text = input.val();
+    	for (var i = 0; i < text.length; i++) {
+    		if (text[i] in puaconvtable) {
+    			text = [text.slice(0, i), puaconvtable[text[i]], text.slice(i + 1)].join('');
+    		}
+    	}
+    	output.val(text);
     });
 });
