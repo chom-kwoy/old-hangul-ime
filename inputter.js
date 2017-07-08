@@ -416,13 +416,26 @@ $(document).ready(function() {
     // CONVERTING
     var output = $('.convert-output');
     var input = $('.convert-input');
-    input.on('input change keyup', function(event) {
+    var highlights = $('.highlights');
+    var backdrop = $('.backdrop')
+    input.on('input change keyup ready', function(event) {
     	text = input.val();
+    	newtext = '';
+    	marktext = '';
     	for (var i = 0; i < text.length; i++) {
     		if (text[i] in puaconvtable) {
-    			text = [text.slice(0, i), puaconvtable[text[i]], text.slice(i + 1)].join('');
+    			marktext += '<mark>' + text[i] + '</mark>';
+    			newtext += puaconvtable[text[i]];
+    		} else {
+    			marktext += text[i];
+    			newtext += text[i];
     		}
     	}
-    	output.val(text);
+    	highlights.html(marktext + '<br><br><br>');
+    	output.val(newtext);
+    });
+    input.on('scroll', function(event) {
+    	var scrollTop = input.scrollTop();
+		backdrop.scrollTop(scrollTop);
     });
 });

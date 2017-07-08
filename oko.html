@@ -56,6 +56,8 @@
         textarea {
             display: inline-block;
             padding: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
             font-size: 20pt;
             text-rendering: geometricPrecision;
             border: none;
@@ -63,6 +65,37 @@
             box-shadow: rgba(0,0,0,0.2) 0 0 10px;
             background-color: white;
             color: #333;
+            margin: 0;
+            border-radius: 0;
+            overflow: auto;
+        }
+        .convert-input {
+            background: transparent;
+            position: absolute;
+            top: 0;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+        }
+        .backdrop {
+            overflow: auto;
+            background: white;
+            position: absolute;
+            padding: 10px;
+            top: 0;
+        }
+        .highlights {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: transparent;
+            font-size: 20pt;
+            text-rendering: geometricPrecision;
+            border: none;
+        }
+        mark {
+            color: transparent;
+            background-color: #d4e9ab; /* or whatever */
         }
         .input {
             width: 800px;
@@ -72,6 +105,9 @@
         .convert {
             width: 400px;
             height: 400px;
+        }
+        .convert-output {
+            position: absolute;
         }
         .arrow {
             display: inline-block;
@@ -93,24 +129,30 @@
     <script src="inputter.js"></script>
 </head>
 <body>
-<header>옛한글 입력기</header>
-<div>
-  <section>
-    <div class="sectiontitle">옛한글 입력기</div>
-    <textarea class='input' title="input"
-        placeholder="나랏〮말〯ᄊᆞ미〮...";></textarea>
-    <span class='preview'></span>
+    <header>옛한글 입력기</header>
     <div>
-      <label><input type="radio" name="dir" value="hor" checked>가로쓰기</label>
-      <label><input type="radio" name="dir" value="ver">세로쓰기</label>
+        <section>
+            <div class="sectiontitle">옛한글 입력기</div>
+            <textarea class='input' title="input"
+            placeholder="나랏〮말〯ᄊᆞ미〮...";></textarea>
+            <span class='preview'></span>
+            <div>
+                <label><input type="radio" name="dir" value="hor" checked>가로쓰기</label>
+                <label><input type="radio" name="dir" value="ver">세로쓰기</label>
+            </div>
+        </section>
+        <section>
+            <div class="sectiontitle">한양 PUA → 첫가끝 코드 변환</div>
+            <div class="container convert">
+                <div class="backdrop convert">
+                    <div class="highlights">
+                    </div>
+                </div>
+                <textarea class='convert convert-input' title='pua-input' placeholder="한양 PUA"></textarea>
+            </div>
+            <div class='arrow'>→</div>
+            <textarea class='convert convert-output' title='uni-output' placeholder="첫가끝 코드"></textarea>
+        </section>
     </div>
-  </section>
-  <section>
-    <div class="sectiontitle">한양 PUA → 첫가끝 코드 변환</div>
-    <textarea class='convert convert-input' title='pua-input' placeholder="한양 PUA"></textarea>
-    <div class='arrow'>→</div>
-    <textarea class='convert convert-output' title='uni-output' placeholder="첫가끝 코드"></textarea>
-  </section>
-</div>
 </body>
 </html>
