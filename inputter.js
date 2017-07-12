@@ -419,7 +419,7 @@ $(document).ready(function() {
     var highlights = $('.highlights');
     var backdrop = $('.backdrop')
     input.on('input change keyup ready', function(event) {
-    	text = input.val();
+    	text = input.val().normalize();
     	newtext = '';
     	marktext = '';
     	for (var i = 0; i < text.length; i++) {
