@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Korean Quiz</title>
+  <style>
+    @font-face {
+      font-family: 'NanumBarunGothic YetHangul';
+      src: local('NanumBarunGothic YetHangul'),
+      url('NanumBarunGothic-YetHangul.woff2') format('woff2'),
+      url('NanumBarunGothic-YetHangul.woff') format('woff'),
+      url('NanumBarunGothic-YetHangul.ttf') format('truetype');
+    }
+    * {
+      font-family: 'NanumBarunGothic YetHangul','함초롬돋움 LVT','HCR Dotum LVT','함초롬바탕 LVT',
+      'HCR Batang LVT','본고딕','Source Han Sans K','본고딕 KR','Source Han Sans KR','Noto Sans CJK KR',
+      '나눔바른고딕 옛한글','나눔명조 옛한글','NanumMyeongjo YetHangul','은 바탕','Un Batang','돋움 옛한글',
+      'Dotum Old Hangul','바탕 옛한글','Batang Old Hangul','굴림 옛한글','NewGulim Old Hangul','궁서 옛한글',
+      'Gungsuh Old Hangul','맑은 고딕','Malgun Gothic','함초롬돋움','HCR Dotum','함초롬바탕','HCR Batang',
+      'Code2000',sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #EEE;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      width: 100%;
+      background-color: rgba(0,0,0,0.8);
+      box-shadow: rgba(0,0,0,0.2) 0 0 10px;
+      height: 72px;
+      margin-bottom: 10px;
+      color: #eee;
+      line-height: 72px;
+      padding-left: 20px;
+      font-size: 28pt;
+    }
+    .wrapper {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      box-shadow: rgba(0,0,0,0.2) 0 0 10px;
+      padding: 10px;
+      border-radius: 2px;
+    }
+    .quiz-title {
+      font-size: larger;
+      font-weight: bold;
+      padding: 10px;
+    }
+    .quiz-content {
+      padding: 20px;
+    }
+    input[type='checkbox'] {
+      margin: 10px;
+    }
+    button {
+      float: right;
+    }
+    .btn {
+      -webkit-border-radius: 2;
+      -moz-border-radius: 2;
+      border-radius: 2px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 15px;
+      border-width: 0;
+      background: #7a7a7a;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #454545;
+      text-decoration: none;
+    }
+    .btn:disabled {
+      background: #DDD;
+    }
+    label {
+    }
+  </style>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+    var qIndex = 0, nCorrect = 0;
+    var qna = [
+      {
+        title: "What is the answer to this question?",
+        content: "This is a sentence.",
+        1: "number one",
+        2: "number two",
+        3: "number three",
+        4: "number four",
+        answer: [1]
+      },
+      {
+        title: "What is the answer to this second question?",
+        content: "This is the second sentence.",
+        1: "2 number one",
+        2: "2 number two",
+        3: "2 number three",
+        4: "2 number four",
+        answer: [2]
+      },
+    ];
+    function arraysEqual(a, b) {
+      a = Array.isArray(a) ? a : [];
+      b = Array.isArray(b) ? b : [];
+      return a.length === b.length && a.every((el, ix) => el === b[ix]);
+    }
+    $(document).ready(function() {
+      var title = $('.quiz-title');
+      var content = $('.quiz-content');
+      var checkboxes = $("input[type='checkbox']");
+      var labels = $('label');
+      var button = $('button');
+      checkboxes.each(function() {
+        $(this).click(function() {
+          var checked = false;
+          checkboxes.each(function(){
+            if ($(this).prop('checked')) checked = true;
+          });
+          if (checked) button.prop('disabled', false);
+          else button.prop('disabled', true);
+        })
+      });
+      var setQ = function(i) {
+        var q = qna[i];
+        title.html("Question #" + (i + 1) + ". " + q['title']);
+        content.html(q['content']);
+        labels.each(function(i) {
+          $(this).html(q[i + 1]);
+        });
+        checkboxes.each(function() {
+          $(this).prop('checked', false);
+        });
+        button.prop('disabled', true);
+      };
+      setQ(0);
+      $(document).on('submit', '#form', function(event) {
+        event.preventDefault();
+        var arr = [];
+        checkboxes.each(function(i){
+          if($(this).prop('checked')) arr.push(i + 1);
+        });
+        if (arraysEqual(arr, qna[qIndex]['answer'])) {
+          console.log("correct");
+          ++nCorrect;
+        }
+        if (qIndex + 1 < qna.length) {
+          setQ(++qIndex);
+        }
+        else {
+          title.html("Your score is");
+          content.html(nCorrect + "/" + qna.length);
+          $('.quiz-form').hide();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>Mujjingun Korean Quiz</header>
+  <div class="wrapper">
+    <div class="quiz-title">
+      Answer this Question.
+    </div>
+    <div class="quiz-content">
+      This is an example sentence.
+    </div>
+    <div class="quiz-form">
+      <form id="form">
+        <input type="checkbox" name="1"><label for="1">Number 1.</label><br>
+        <input type="checkbox" name="2"><label for="1">Number 2.</label><br>
+        <input type="checkbox" name="3"><label for="1">Number 3.</label><br>
+        <input type="checkbox" name="4"><label for="1">Number 4.</label><br>
+        <button class="btn" >Next</button><br>
+        <div style="clear: right"></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
