@@ -85,28 +85,129 @@
     var qIndex = 0, nCorrect = 0;
     var qna = [
       {
-        title: "What is the answer to this question?",
-        content: "This is a sentence.",
-        1: "number one",
-        2: "number two",
-        3: "number three",
-        4: "number four",
+        title: "Select all that is appropriate for the blank.",
+        content: "그런 일이라면 남보다 (  ) 않을 자신이 있습니다.",
+        1: "뒤쳐지지",
+        2: "뒈지지",
+        3: "뒤지지",
+        4: "뒤치지",
+        answer: [1, 3]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "(  ) 반말이야!",
+        1: "어따 대고",
+        2: "엇다대고",
+        3: "엇다 대고",
+        4: "얻다 대고",
+        answer: [4]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "나뭇가지에 끈을 단단히 (  ).",
+        1: "메라",
+        2: "메어라",
+        3: "매라",
+        4: "매어라",
+        answer: [3, 4]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "문을 꼭 (  ) 했잖아.",
+        1: "잠궈라고",
+        2: "잠가라고",
+        3: "잠그라고",
+        4: "잠구라고",
+        answer: [3]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "잘 (   ) 모르겠다.",
+        1: "돌아갔을는지",
+        2: "돌아갔을런지",
+        3: "돌아갔을른지",
+        4: "돌아갔을은지",
         answer: [1]
       },
       {
-        title: "What is the answer to this second question?",
-        content: "This is the second sentence.",
-        1: "2 number one",
-        2: "2 number two",
-        3: "2 number three",
-        4: "2 number four",
+        title: "Select all that is appropriate for the blank.",
+        content: "(   )은 되어 보였다.",
+        1: "몇 천만 명",
+        2: "몇천만 명",
+        3: "몇천 만 명",
+        4: "몇 천만명",
         answer: [2]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "저건 (   )야!",
+        1: "내 꺼",
+        2: "내 거",
+        3: "내꺼",
+        4: "내거",
+        answer: [2]
+      },
+      {
+        title: "Select all that is appropriate for the blank.",
+        content: "(   )에 커다랗게 기사가 날 겁니다.",
+        1: "십오일 자 신문",
+        2: "십오일자 신문",
+        3: "십오 일 자 신문",
+        4: "십 오 일자 신문",
+        answer: [3]
+      },
+      {
+        title: "Which are the correct conjugation and pronunciation of ...",
+        content: "하얗다[to be white] + -네[exclam.]",
+        1: "하얗네 [하ː야네]",
+        2: "하야네 [하ː야네]",
+        3: "하얗네 [하ː얀네]",
+        4: "하얀네 [하ː얀네]",
+        answer: [2, 3]
+      },
+      {
+        title: "Select the correct form that most elevates the 선생님.",
+        content: "내가 선생님께 미리 (   ).",
+        1: "말씀했어",
+        2: "말씀드렸어",
+        3: "말해주셨어",
+        4: "말씀드려주셨어",
+        answer: [2]
+      },
+      {
+        title: "Select the correct form that most elevates the 선생님.",
+        content: "옛 선생님을 (  ) 15년이 다 되어 간다.",
+        1: "봐드린지",
+        2: "봰 지",
+        3: "뵌 지",
+        4: "보신지",
+        answer: [3]
+      },
+      {
+        title: "Select the correct pronunciations of ...",
+        content: "낯익은 목소리 새소리 듣습니다.",
+        1: "[나디근 목쏘리 새소리 듣씁니다]",
+        2: "[나디근 목쏘리 새쏘리 드씁니다]",
+        3: "[나치근 목쏘리 새쏘리 듣씁니다]",
+        4: "[나지근 목쏘리 새소리 듣씁니다]",
+        answer: [1]
       },
     ];
     function arraysEqual(a, b) {
       a = Array.isArray(a) ? a : [];
       b = Array.isArray(b) ? b : [];
       return a.length === b.length && a.every((el, ix) => el === b[ix]);
+    }
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
     }
     $(document).ready(function() {
       var title = $('.quiz-title');
@@ -124,6 +225,7 @@
           else button.prop('disabled', true);
         })
       });
+      qna = shuffle(qna);
       var setQ = function(i) {
         var q = qna[i];
         title.html("Question #" + (i + 1) + ". " + q['title']);
