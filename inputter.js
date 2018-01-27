@@ -414,26 +414,27 @@ $(document).ready(function() {
     });
 
     // CONVERTING
-    var output = $('.convert-output');
+    function convert(event) {
+        var output = $('.convert-output');
+        var highlights = $('.highlights');
+        text = input.val().normalize();
+        newtext = '';
+        marktext = '';
+        for (var i = 0; i < text.length; i++) {
+            if (text[i] in puaconvtable) {
+                marktext += '<mark>' + text[i] + '</mark>';
+                newtext += puaconvtable[text[i]];
+            } else {
+                marktext += text[i];
+                newtext += text[i];
+            }
+        }
+        highlights.html(marktext + '<br><br><br>');
+        output.val(newtext);
+    }
     var input = $('.convert-input');
-    var highlights = $('.highlights');
-    var backdrop = $('.backdrop')
-    input.on('input change keyup ready', function(event) {
-    	text = input.val().normalize();
-    	newtext = '';
-    	marktext = '';
-    	for (var i = 0; i < text.length; i++) {
-    		if (text[i] in puaconvtable) {
-    			marktext += '<mark>' + text[i] + '</mark>';
-    			newtext += puaconvtable[text[i]];
-    		} else {
-    			marktext += text[i];
-    			newtext += text[i];
-    		}
-    	}
-    	highlights.html(marktext + '<br><br><br>');
-    	output.val(newtext);
-    });
+    var backdrop = $('.backdrop');
+    input.on('input change keyup ready', convert);
     input.on('scroll', function(event) {
     	var scrollTop = input.scrollTop();
 		backdrop.scrollTop(scrollTop);
