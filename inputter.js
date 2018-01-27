@@ -423,7 +423,16 @@ $(document).ready(function() {
         for (var i = 0; i < text.length; i++) {
             if (text[i] in puaconvtable) {
                 marktext += '<mark>' + text[i] + '</mark>';
-                newtext += puaconvtable[text[i]];
+                var newchar = puaconvtable[text[i]];
+                if ($('#mediawiki').prop('checked') && (
+                    newchar.charCodeAt(0) >= 0x1100 &&
+                    newchar.charCodeAt(0) <= 0x1112 &&
+                    newchar.charCodeAt(1) >= 0x1161 &&
+                    newchar.charCodeAt(1) <= 0x1175
+                )) {
+                    newchar = newchar[0] + '<!---->' + newchar.substring(1);
+                }
+                newtext += newchar;
             } else {
                 marktext += text[i];
                 newtext += text[i];
@@ -434,6 +443,7 @@ $(document).ready(function() {
     }
     var input = $('.convert-input');
     var backdrop = $('.backdrop');
+    $('#mediawiki').change(convert);
     input.on('input change keyup ready', convert);
     input.on('scroll', function(event) {
     	var scrollTop = input.scrollTop();
