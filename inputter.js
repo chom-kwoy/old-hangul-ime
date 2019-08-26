@@ -73,7 +73,64 @@ var cho = {
     '\u3184': '\u1157', // ㅍㅇ
     '\u317F': '\u1140', // pansios
     '\u3186': '\u1159', // yeorinhieuh
-    'ㅄ': '\u1121'
+    'ㅄ': '\u1121',
+    'ᄓ': 'ᄓ',
+    'ㅦ': 'ᄕ',
+    'ᄖ': 'ᄖ',
+    'ᄗ': 'ᄗ',
+    'ᄘ': 'ᄘ',
+    'ᄛ': 'ᄛ',
+    'ᄜ': 'ᄜ',
+    'ㅲ': 'ᄞ',
+    'ᄟ': 'ᄟ',
+    'ㅴ': 'ᄢ',
+    'ㅵ': 'ᄣ',
+    'ᄤ': 'ᄤ',
+    'ᄥ': 'ᄥ',
+    'ᄦ': 'ᄦ',
+    'ㅶ': 'ᄧ',
+    'ᄨ': 'ᄨ',
+    'ㅷ': 'ᄩ',
+    'ᄪ': 'ᄪ',
+    'ᄰ': 'ᄰ',
+    'ᄱ': 'ᄱ',
+    'ᄳ': 'ᄳ',
+    'ᄴ': 'ᄴ',
+    'ᄵ': 'ᄵ',
+    'ᄷ': 'ᄷ',
+    'ᄸ': 'ᄸ',
+    'ᄹ': 'ᄹ',
+    'ᄺ': 'ᄺ',
+    'ᄻ': 'ᄻ',
+    'ᅁ': 'ᅁ',
+    'ᅂ': 'ᅂ',
+    'ᅃ': 'ᅃ',
+    'ᅄ': 'ᅄ',
+    'ᅅ': 'ᅅ',
+    'ᅆ': 'ᅆ',
+    'ㆀ': 'ᅇ',
+    'ᅈ': 'ᅈ',
+    'ᅉ': 'ᅉ',
+    'ᅊ': 'ᅊ',
+    'ᅋ': 'ᅋ',
+    'ᅒ': 'ᅒ',
+    'ᅓ': 'ᅓ',
+    'ᅖ': 'ᅖ',
+    'ᅚ': 'ᅚ',
+    'ㅧ': 'ᅛ',
+    'ᅞ': 'ᅞ',
+    'ꥠ': 'ꥠ',
+    'ꥡ': 'ꥡ',
+    'ꥢ': 'ꥢ',
+    'ꥣ': 'ꥣ',
+    'ㄺ': 'ꥤ',
+    'ꥥ': 'ꥥ',
+    'ㅪ': 'ꥦ',
+    'ꥧ': 'ꥧ',
+    'ㄻ': 'ꥨ',
+    'ㄼ': 'ꥩ',
+    'ꥪ': 'ꥪ',
+    'ꥫ': 'ꥫ',
 };
 cho_to_cons = reverse(cho);
 var jong = {
@@ -140,7 +197,70 @@ var comb_cons = {
     'ㅂㅇ': '\u3178',
     'ㅃㅇ': '\u3179',
     'ㅍㅇ': '\u3184',
-    'ㅅㅇ': '\u317F' // pansios
+    'ㅅㅇ': '\u317F', // pansios
+    'ㄴㄱ': 'ᄓ',
+    'ㄴㄷ': 'ㅦ',
+    'ㄴㅂ': 'ᄖ',
+    'ㄷㄱ': 'ᄗ',
+    'ㄹㄴ': 'ᄘ',
+    'ㄹㅇ': 'ᄛ',
+    'ㅁㅂ': 'ᄜ',
+    'ㅂㄱ': 'ㅲ',
+    'ㅂㄴ': 'ᄟ',
+    'ㅄㄱ': 'ㅴ',
+    'ㅄㄷ': 'ㅵ',
+    'ㅄㅂ': 'ᄤ',
+    'ㅄㅅ': 'ᄥ',
+    'ㅄㅈ': 'ᄦ',
+    'ㅂㅈ': 'ㅶ',
+    'ㅂㅊ': 'ᄨ',
+    'ㅂㅌ': 'ㅷ',
+    'ㅂㅍ': 'ᄪ',
+    'ㅅㄹ': 'ᄰ',
+    'ㅅㅁ': 'ᄱ',
+    'ㅽㄱ': 'ᄳ',
+    'ㅆㅅ': 'ᄴ',
+    'ㅿㅇ': 'ᄵ',
+    'ㅅㅊ': 'ᄷ',
+    'ㅅㅋ': 'ᄸ',
+    'ㅅㅌ': 'ᄹ',
+    'ㅅㅍ': 'ᄺ',
+    'ㅅㅎ': 'ᄻ',
+    'ㅇㄱ': 'ᅁ',
+    'ㅇㄷ': 'ᅂ',
+    'ㅇㅁ': 'ᅃ',
+    'ㅇㅂ': 'ᅄ',
+    'ㅇㅅ': 'ᅅ',
+    'ᅅㅇ': 'ᅆ',
+    'ㅇㅇ': 'ㆀ',
+    'ㅇㅈ': 'ᅈ',
+    'ㅇㅊ': 'ᅉ',
+    'ㅇㅌ': 'ᅊ',
+    'ㅇㅍ': 'ᅋ',
+    'ㆁㅅ': 'ㆂ',
+    'ㆂㅇ': 'ㆃ',
+    'ㅊㅋ': 'ᅒ',
+    'ㅊㅎ': 'ᅓ',
+    'ㅍㅂ': 'ᅖ',
+    'ㄱㄷ': 'ᅚ',
+    'ㄴㅅ': 'ㅧ',
+    'ㄷㄹ': 'ᅞ',
+    'ㅧㅇ': 'ㅨ',
+    'ㄺㅅ': 'ㅩ',
+    'ㄹㄷ': 'ㅪ',
+    'ㄼㅅ': 'ㅫ',
+    'ㄽㅇ': 'ㅬ',
+    'ㅁㅂ': 'ㅮ',
+    'ㅁㅅ': 'ㅯ',
+    'ㅯㅇ': 'ㅰ',
+    'ㄷㅁ': 'ꥠ',
+    'ㄷㅂ': 'ꥡ',
+    'ㄷㅅ': 'ꥢ',
+    'ㄷㅈ': 'ꥣ',
+    'ㄺㄱ': 'ꥥ',
+    'ㅪㄷ': 'ꥧ',
+    'ㄼㅂ': 'ꥪ',
+    'ㄼㅇ': 'ꥫ',
 };
 rev_comb_cons = reverse(comb_cons);
 var vowel_key = {
@@ -220,9 +340,9 @@ var comb_vowel = {
     'ㅠㅣ': '\u318C'
 };
 var rev_comb_vowel = reverse(comb_vowel);
-function isCons(c) {
-    if(c == undefined) return false;
-    c = c.charCodeAt(0);
+function isCons(ch) {
+    if(ch == undefined) return false;
+    c = ch.charCodeAt(0);
     return 0x3131 <= c && c <= 0x314E || 0x3165 <= c && c <= 0x3186;
 }
 function isVowel(c) {
@@ -233,17 +353,17 @@ function isVowel(c) {
 function isCho(c) {
     if(c == undefined) return false;
     c = c.charCodeAt(0);
-    return 0x1100 <= c && c <= 0x115F;
+    return 0x1100 <= c && c <= 0x115F || 0xA960 <= c && c <= 0xA97C;
 }
 function isJung(c) {
     if(c == undefined) return false;
     c = c.charCodeAt(0);
-    return 0x1160 <= c && c <= 0x11A7;
+    return 0x1160 <= c && c <= 0x11A7 || 0xD7B0 <= c && c <= 0xD7C6;
 }
 function isJong(c) {
     if(c == undefined) return false;
     c = c.charCodeAt(0);
-    return 0x11A8 <= c && c <= 0x11FF;
+    return 0x11A8 <= c && c <= 0x11FF || 0xD7CB <= c && c <= 0xD7FB;
 }
 function isTonemark(c) {
     if(c == undefined) return false;
@@ -280,7 +400,7 @@ $(document).ready(function() {
         if(k == 17) ctrl = true;
 
         console.log(k);
-        
+
         if(ctrl || [16, 17, 18, 25, 37, 39, 116].indexOf(k) != -1) {
             return; // invoke default behavior for these inputs
         }
@@ -398,9 +518,9 @@ $(document).ready(function() {
             cur = getCurComp();
             span.text(cur);
         }
-        
+
         event.preventDefault();
-        
+
     }).on('keyup', function (event) {
         if(event.which == 16) shift = false;
         if(event.which == 17) ctrl = false;
