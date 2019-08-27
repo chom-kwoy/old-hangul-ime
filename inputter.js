@@ -5,36 +5,36 @@ function reverse(map) {
     },{});
 }
 var cons_key = {
-    65: '\u3141', // ㅁ
-    67: '\u314A', // ㅊ
-    68: '\u3147', // ㅇ
-    69: '\u3137', // ㄷ
-    70: '\u3139', // ㄹ
-    71: '\u314E', // ㅎ
-    81: '\u3142', // ㅂ
-    82: '\u3131', // ㄱ
-    83: '\u3134', // ㄴ
-    84: '\u3145', // ㅅ
-    86: '\u314D', // ㅍ
-    87: '\u3148', // ㅈ
-    88: '\u314C', // ㅌ
-    90: '\u314B', // ㅋ
+    'a': '\u3141', // ㅁ
+    'c': '\u314A', // ㅊ
+    'd': '\u3147', // ㅇ
+    'e': '\u3137', // ㄷ
+    'f': '\u3139', // ㄹ
+    'g': '\u314E', // ㅎ
+    'q': '\u3142', // ㅂ
+    'r': '\u3131', // ㄱ
+    's': '\u3134', // ㄴ
+    't': '\u3145', // ㅅ
+    'v': '\u314D', // ㅍ
+    'w': '\u3148', // ㅈ
+    'x': '\u314C', // ㅌ
+    'z': '\u314B', // ㅋ
 };
 var cons_shift_key = {
-    65: 'ퟠ', // ㅁㅁ
-    67: '\u314A', // ㅊ
-    68: '\u3181', // yetieung
-    69: '\u3138', // ㄷㄷ
-    70: '\u1119', // ㄹㄹ
-    71: '\u3186', // yeorinhieuh
-    81: '\u3143', // ㅂㅂ
-    82: '\u3132', // ㄱㄱ
-    83: '\u3165', // ㄴㄴ
-    84: '\u3146', // ㅅㅅ
-    86: '\u314D', // ㅍ
-    87: '\u3149', // ㅈㅈ
-    88: 'ꥹ', // ㅌㅌ
-    90: '\u314B'  // ㅋ
+    'A': 'ퟠ', // ㅁㅁ
+    'C': '\u314A', // ㅊ
+    'D': '\u3181', // yetieung
+    'E': '\u3138', // ㄷㄷ
+    'F': '\u1119', // ㄹㄹ
+    'G': '\u3186', // yeorinhieuh
+    'Q': '\u3143', // ㅂㅂ
+    'R': '\u3132', // ㄱㄱ
+    'S': '\u3165', // ㄴㄴ
+    'T': '\u3146', // ㅅㅅ
+    'V': '\u314D', // ㅍ
+    'W': '\u3149', // ㅈㅈ
+    'X': 'ꥹ', // ㅌㅌ
+    'Z': '\u314B'  // ㅋ
 };
 var cho = {
     '\u3141': '\u1106', // ㅁ
@@ -453,32 +453,32 @@ var comb_cons = {
 };
 rev_comb_cons = reverse(comb_cons);
 var vowel_key = {
-    66: '\u3160', // ㅠ
-    72: '\u3157', // ㅗ
-    73: '\u3151', // ㅑ
-    74: '\u3153', // ㅓ
-    75: '\u314F', // ㅏ
-    76: '\u3163', // ㅣ
-    77: '\u3161', // ㅡ
-    78: '\u315C', // ㅜ
-    79: '\u3150', // ㅐ
-    80: '\u3154', // ㅔ
-    85: '\u3155', // ㅕ
-    89: '\u315B'  // ㅛ
+    'b': '\u3160', // ㅠ
+    'h': '\u3157', // ㅗ
+    'i': '\u3151', // ㅑ
+    'j': '\u3153', // ㅓ
+    'k': '\u314F', // ㅏ
+    'l': '\u3163', // ㅣ
+    'm': '\u3161', // ㅡ
+    'n': '\u315C', // ㅜ
+    'o': '\u3150', // ㅐ
+    'p': '\u3154', // ㅔ
+    'u': '\u3155', // ㅕ
+    'y': '\u315B'  // ㅛ
 };
 var vowel_shift_key = {
-    66: '\u3160', // ㅠ
-    72: '\u3157', // ㅗ
-    73: '\u3151', // ㅑ
-    74: '\u3153', // ㅓ
-    75: '\u318D', // araea
-    76: '\u3163', // ㅣ
-    77: '\u3161', // ㅡ
-    78: '\u315C', // ㅜ
-    79: '\u3152', // ㅒ
-    80: '\u3156', // ㅖ
-    85: '\u3155', // ㅕ
-    89: '\u315B'  // ㅛ
+    'B': '\u3160', // ㅠ
+    'H': '\u3157', // ㅗ
+    'I': '\u3151', // ㅑ
+    'J': '\u3153', // ㅓ
+    'K': '\u318D', // araea
+    'L': '\u3163', // ㅣ
+    'M': '\u3161', // ㅡ
+    'N': '\u315C', // ㅜ
+    'O': '\u3152', // ㅒ
+    'P': '\u3156', // ㅖ
+    'U': '\u3155', // ㅕ
+    'Y': '\u315B'  // ㅛ
 };
 var jung = {
     '\u3160': '\u1172', // ㅠ
@@ -562,8 +562,6 @@ function isTonemark(c) {
 function isHangul(c) {
     return isCons(c) || isCho(c) || isJung(c) || isJong(c) || isTonemark(c);
 }
-var shift = false;
-var ctrl = false;
 var other = false;
 $(document).ready(function() {
     var ta = $('.input');
@@ -584,13 +582,13 @@ $(document).ready(function() {
         }
     }
     ta.on('keydown', function (event) {
-        var k = event.which;
-        if(k == 16) shift = true;
-        if(k == 17) ctrl = true;
+        var k = event.key;
+		var shift = event.shiftKey;
+		var ctrl = event.ctrlKey;
 
-        console.log(k);
+        console.log(event);
 
-        if(ctrl || [16, 17, 18, 25, 37, 39, 116].indexOf(k) != -1) {
+        if(ctrl || ["Shift", "Ctrl"].indexOf(k) != -1) {
             return; // invoke default behavior for these inputs
         }
 
@@ -604,7 +602,7 @@ $(document).ready(function() {
         var compositing = false;
 
         // 자음을 쳤다면
-        if(k in cons_key) {
+        if(k in cons_key || k in cons_shift_key) {
             compositing = true;
 
             if (!shift) i = cons_key[k];
@@ -624,7 +622,7 @@ $(document).ready(function() {
             if (isJung(last) && i in jong) i = jong[i];
         }
         // 모음을 쳤다면
-        else if(k in vowel_key) {
+        else if(k in vowel_key || k in vowel_shift_key) {
             compositing = true;
 
             if(!shift) i = vowel_key[k];
@@ -665,7 +663,7 @@ $(document).ready(function() {
             }
         }
         // 백스페이스
-        else if(k == 8) {
+        else if(k == "Backspace") {
             compositing = true;
 
             last = cur.slice(-1);
@@ -685,14 +683,14 @@ $(document).ready(function() {
                 cur += cho_to_cons[last];
             }
         }
-        else if(k == 32) i = ' '; // space
-        else if(k == 49) {
+        else if(k == " ") i = ' '; // space
+        else if(k == "1") {
             compositing = true;
             i = '\u302E'; // tone 1
-        } else if(k == 50) {
+        } else if(k == "2") {
             compositing = true;
             i = '\u302F'; // tone 2
-        } else if(k == 13) { // enter
+        } else if(k == "Enter") { // enter
             i = '\n';
         } else {
             ta.setSelection(ta.getSelection().end);
@@ -710,12 +708,8 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-    }).on('keyup', function (event) {
-        if(event.which == 16) shift = false;
-        if(event.which == 17) ctrl = false;
     }).on('keypress', function(event) {
-        var k = event.which;
-        if(ctrl || other || k == 0) {
+        if(event.ctrlKey || other) {
             other = false;
             return;
         }
