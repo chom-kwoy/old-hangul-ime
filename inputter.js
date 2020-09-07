@@ -509,7 +509,8 @@ var jung = {
     '\u3189': '\u1188', // ㅛㅣ
     '\u318A': '\u1191', // ㅠㅕ
     '\u318B': '\u1192', // ㅠㅖ
-    '\u318C': '\u1194' // ㅠㅣ
+    '\u318C': '\u1194', // ㅠㅣ
+    '\u11A2': '\u11A2', // araea araea
 };
 jung_to_vowel = reverse(jung);
 var comb_vowel = {
@@ -526,7 +527,8 @@ var comb_vowel = {
     'ㅛㅣ': '\u3189',
     'ㅠㅕ': '\u318A',
     'ㅠㅖ': '\u318B',
-    'ㅠㅣ': '\u318C'
+    'ㅠㅣ': '\u318C',
+    '\u318D\u318D': '\u11A2',
 };
 var rev_comb_vowel = reverse(comb_vowel);
 function isCons(ch) {
