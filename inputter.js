@@ -532,34 +532,34 @@ var comb_vowel = {
 };
 var rev_comb_vowel = reverse(comb_vowel);
 function isCons(ch) {
-    if(ch == undefined) return false;
+    if(ch === undefined) return false;
     c = ch.charCodeAt(0);
     return 0x3131 <= c && c <= 0x314E || 0x3165 <= c && c <= 0x3186;
 }
 function isVowel(c) {
-    if(c == undefined) return false;
+    if(c === undefined) return false;
     c = c.charCodeAt(0);
     return 0x314F <= c && c <= 0x3163 || 0x3187 <= c && c <= 0x318E;
 }
 function isCho(c) {
-    if(c == undefined) return false;
+    if(c === undefined) return false;
     c = c.charCodeAt(0);
     return 0x1100 <= c && c <= 0x115F || 0xA960 <= c && c <= 0xA97C;
 }
 function isJung(c) {
-    if(c == undefined) return false;
+    if(c === undefined) return false;
     c = c.charCodeAt(0);
     return 0x1160 <= c && c <= 0x11A7 || 0xD7B0 <= c && c <= 0xD7C6;
 }
 function isJong(c) {
-    if(c == undefined) return false;
+    if(c === undefined) return false;
     c = c.charCodeAt(0);
     return 0x11A8 <= c && c <= 0x11FF || 0xD7CB <= c && c <= 0xD7FB;
 }
 function isTonemark(c) {
-    if(c == undefined) return false;
+    if(c === undefined) return false;
     c = c.charCodeAt(0);
-    return c == 0x302E || c == 0x302F;
+    return c === 0x302E || c === 0x302F;
 }
 function isHangul(c) {
     return isCons(c) || isCho(c) || isJung(c) || isJong(c) || isTonemark(c);
@@ -569,15 +569,15 @@ $(document).ready(function() {
     var ta = $('.input');
     var span = $('span');
     $('input[type=radio]').on('change', function() {
-        if($(this).val() == 'hor') ta.css('writing-mode', 'horizontal-tb');
-        else if($(this).val() == 'ver') ta.css('writing-mode', 'vertical-rl');
+        if($(this).val() === 'hor') ta.css('writing-mode', 'horizontal-tb');
+        else if($(this).val() === 'ver') ta.css('writing-mode', 'vertical-rl');
     });
     function getCurComp() { // get currently compositing character(s)
         var end = ta.getSelection().end;
         var cur = ta.val().slice(0, end);
-        if(cur.length == 0) return "";
+        if(cur.length === 0) return "";
         for(var t = cur.length - 1;; t--) {
-            if(t == 0 || isCho(cur[t]) || isCons(cur[t]) || !isHangul(cur[t])) {
+            if(t === 0 || isCho(cur[t]) || isCons(cur[t]) || !isHangul(cur[t])) {
                 ta.setSelection(t, end);
                 return cur.slice(t);
             }
@@ -588,9 +588,7 @@ $(document).ready(function() {
 		var shift = event.shiftKey;
 		var ctrl = event.ctrlKey;
 
-        console.log(event);
-
-        if(ctrl || ["Shift", "Ctrl"].indexOf(k) != -1) {
+        if(ctrl || ["Shift", "Ctrl"].indexOf(k) !== -1) {
             return; // invoke default behavior for these inputs
         }
 
@@ -665,7 +663,7 @@ $(document).ready(function() {
             }
         }
         // 백스페이스
-        else if(k == "Backspace") {
+        else if(k === "Backspace") {
             compositing = true;
 
             last = cur.slice(-1);
@@ -685,14 +683,22 @@ $(document).ready(function() {
                 cur += cho_to_cons[last];
             }
         }
-        else if(k == " ") i = ' '; // space
-        else if(k == "1") {
+        else if(k === " ") { // space
+            if (cur !== "") {
+                ta.replaceSelectedText(cur);
+                ta.setSelection(ta.getSelection().end);
+                event.preventDefault();
+                return;
+            } else {
+                i = ' ';
+            }
+        } else if(k === "1") {
             compositing = true;
             i = '\u302E'; // tone 1
-        } else if(k == "2") {
+        } else if(k === "2") {
             compositing = true;
             i = '\u302F'; // tone 2
-        } else if(k == "Enter") { // enter
+        } else if(k === "Enter") { // enter
             i = '\n';
         } else {
             ta.setSelection(ta.getSelection().end);
