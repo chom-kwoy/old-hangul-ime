@@ -450,6 +450,7 @@ var comb_cons = {
     'ㅍㅅ': 'ퟺ',
     'ㅍㅌ': 'ퟻ',
     'ㄷㅂ': 'ꥡ',
+    'ㅎㅎ': '\u3185'
 };
 rev_comb_cons = reverse(comb_cons);
 var vowel_key = {
